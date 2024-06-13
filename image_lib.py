@@ -156,7 +156,7 @@ def capture_win(image):
         template = cv2.imread(image, cv2.IMREAD_COLOR)
         match_pos = match_center_loc(screenshot, template, 0, 0)
         return match_pos
-    except:
+    except BaseException as e:
         print('center_win 에러')
         pass
 
@@ -227,7 +227,8 @@ def match_center_loc(screen, template, x, y, per=0):
 
         if x_org and y_org:
             return x_org, y_org
-    except:
+    except BaseException as e:
+        print(e)
         print('center_loc 에러')
         pass
 
@@ -248,7 +249,7 @@ def match_center_loc_org(screen, template, x, y):
             x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
             # print("앱 좌표 : %s, %s" % (x_org,y_org))
             return x_org, y_org
-    except:
+    except         print(e:
         print('center_loc 에러')
         pass
 

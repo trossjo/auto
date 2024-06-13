@@ -3,9 +3,13 @@ import win32gui, win32ui, win32con, win32api
 import time
 
 #여기에 앱이름 적어주면됩니다.
-appname = "LDPlayer-2"
+appname = "LDPlayer-1"
 
 hwnd = win32gui.FindWindow(None, appname)
+
+test = image_lib.match_img(hwnd, ".\\coin_img\\test.png", 0.92)
+image_lib.mouse_click(test[0], test[1])
+exit()
 
 mouse_p = None
 
