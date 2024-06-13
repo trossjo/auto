@@ -175,7 +175,7 @@ def match_img(handle, image, per=0):
     screenshot, x, y = capture_app(handle)
     # screenshot = cv2.imread(
     #     'screenshot.png', cv2.IMREAD_COLOR)
-    # print(image)
+    print(image)
     template = cv2.imread(image, cv2.IMREAD_COLOR)
     match_pos = match_center_loc(screenshot, template, x, y, per)
 
@@ -214,7 +214,7 @@ def match_center_loc(screen, template, x, y, per=0):
             match_per = per
 
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print("유사도 : "+str(max_val)+" / " + str(match_per))
+        print("유사도 : "+str(max_val)+" / " + str(match_per))
 
         if max_val > match_per:
             top_left = max_loc[0]+posx, max_loc[1]+posy
@@ -222,7 +222,7 @@ def match_center_loc(screen, template, x, y, per=0):
             h, w = template.shape[:2]
             x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
             x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
-            # print("앱 좌표 : %s, %s" % (x_org,y_org))
+            print("앱 좌표 : %s, %s" % (x_org,y_org))
 
 
         if x_org and y_org:
