@@ -249,7 +249,7 @@ def match_center_loc_org(screen, template, x, y):
             x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
             # print("앱 좌표 : %s, %s" % (x_org,y_org))
             return x_org, y_org
-    except         print(e:
+    except:
         print('center_loc 에러')
         pass
 
