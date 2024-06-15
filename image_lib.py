@@ -184,9 +184,8 @@ def match_img(handle, image, per=0):
 
 def match_img_list(handle, image):
 
-    x, y = capture_app(handle)
-    screenshot = cv2.imread(
-        'screenshot.png', cv2.IMREAD_COLOR)
+    screenshot, x, y = capture_app(handle)
+    
     template = cv2.imread(image, cv2.IMREAD_COLOR)
     match_list = match_center_loc_list(screenshot, template, x, y)
 
@@ -200,6 +199,29 @@ def match_coord(handle, x, y):
     return res_x, res_y
 
 
+
+
+
+def match_center_loc_org(screen, template, x, y):
+    try:
+        posx = x
+        posy = y
+        res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
+
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        # print("유사도 : %s" % max_val)
+        if max_val > 0.91:
+
+            top_left = max_loc[0]+posx, max_loc[1]+posy
+            top_left_org = max_loc[0], max_loc[1]
+            h, w = template.shape[:2]
+            x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
+            x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
+            # print("앱 좌표 : %s, %s" % (x_org,y_org))
+            return x_org, y_org
+    except:
+        print('center_loc 에러')
+        pass
 
 def match_center_loc(screen, template, x, y, per=0):
     x_org = None
@@ -230,34 +252,12 @@ def match_center_loc(screen, template, x, y, per=0):
     except:
         print('center_loc 에러')
         pass
-
-def match_center_loc_org(screen, template, x, y):
-    try:
-        posx = x
-        posy = y
-        res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
-
-        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print("유사도 : %s" % max_val)
-        if max_val > 0.91:
-
-            top_left = max_loc[0]+posx, max_loc[1]+posy
-            top_left_org = max_loc[0], max_loc[1]
-            h, w = template.shape[:2]
-            x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
-            x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
-            # print("앱 좌표 : %s, %s" % (x_org,y_org))
-            return x_org, y_org
-    except:
-        print('center_loc 에러')
-        pass
-
-
+    
 def match_center_loc_list(screen, template, x, y):
     posx = x
     posy = y
     res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
-    threshold = 0.9
+    threshold = 0.8
     loc = np.where(res >= threshold)
 
     y_list = loc[0]
