@@ -7,10 +7,6 @@ appname = "LDPlayer-1"
 
 hwnd = win32gui.FindWindow(None, appname)
 
-
-test = image_lib.match_img(hwnd, ".\\coin_img\\test.png", 0.92)
-image_lib.mouse_click(hwnd, test[0], test[1])
-exit()
 mouse_p = None
 
 while True:
@@ -80,7 +76,7 @@ while True:
 
 			if check > 50:
 				#재시작
-				image_lib.capture_click(hwnd, ".\\coin_img\\start2.jpg")
+				image_lib.capture_click(hwnd, ".\\coin_img\\start3.jpg")
 				time.sleep(3)
 				image_lib.capture_click(hwnd, ".\\coin_img\\x.jpg")
 				time.sleep(3)
