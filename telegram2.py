@@ -3,7 +3,7 @@ import win32gui, win32ui, win32con, win32api
 import time
 
 #여기에 앱이름 적어주면됩니다.
-appname = "LDPlayer-1"
+appname = "LDPlayer-2"
 
 hwnd = win32gui.FindWindow(None, appname)
 
