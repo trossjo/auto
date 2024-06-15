@@ -211,11 +211,11 @@ def match_center_loc_org(screen, template, x, y):
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         # print("유사도 : "+str(max_val)+" / " + str(match_per))
 
-            top_left = max_loc[0]+posx, max_loc[1]+posy
-            top_left_org = max_loc[0], max_loc[1]
-            h, w = template.shape[:2]
-            x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
-            x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
+        top_left = max_loc[0]+posx, max_loc[1]+posy
+        top_left_org = max_loc[0], max_loc[1]
+        h, w = template.shape[:2]
+        x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
+        x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
             # print("앱 좌표 : %s, %s" % (x_org,y_org))
 
 
