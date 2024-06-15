@@ -7,6 +7,10 @@ appname = "LDPlayer-1"
 
 hwnd = win32gui.FindWindow(None, appname)
 
+
+test = image_lib.match_img(hwnd, ".\\coin_img\\test.png", 0.92)
+image_lib.mouse_click(hwnd, test[0], test[1])
+exit()
 mouse_p = None
 
 while True:

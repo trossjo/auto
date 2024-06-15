@@ -156,7 +156,7 @@ def capture_win(image):
         template = cv2.imread(image, cv2.IMREAD_COLOR)
         match_pos = match_center_loc(screenshot, template, 0, 0)
         return match_pos
-    except:
+    except BaseException as e:
         print('center_win 에러')
         pass
 
@@ -175,7 +175,7 @@ def match_img(handle, image, per=0):
     screenshot, x, y = capture_app(handle)
     # screenshot = cv2.imread(
     #     'screenshot.png', cv2.IMREAD_COLOR)
-    # print(image)
+    print(image)
     template = cv2.imread(image, cv2.IMREAD_COLOR)
     match_pos = match_center_loc(screenshot, template, x, y, per)
 
@@ -209,8 +209,7 @@ def match_center_loc_org(screen, template, x, y):
         res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
 
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print("유사도 : %s" % max_val)
-        if max_val > 0.91:
+        # print("유사도 : "+str(max_val)+" / " + str(match_per))
 
             top_left = max_loc[0]+posx, max_loc[1]+posy
             top_left_org = max_loc[0], max_loc[1]
@@ -218,8 +217,12 @@ def match_center_loc_org(screen, template, x, y):
             x, y = int(top_left[0] + w/2), int(top_left[1] + h/2)
             x_org, y_org = int(top_left_org[0] + w/2), int(top_left_org[1] + h/2)
             # print("앱 좌표 : %s, %s" % (x_org,y_org))
+
+
+        if x_org and y_org:
             return x_org, y_org
-    except:
+    except BaseException as e:
+        print(e)
         print('center_loc 에러')
         pass
 
@@ -252,7 +255,8 @@ def match_center_loc(screen, template, x, y, per=0):
     except:
         print('center_loc 에러')
         pass
-    
+
+
 def match_center_loc_list(screen, template, x, y):
     posx = x
     posy = y
