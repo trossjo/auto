@@ -296,12 +296,12 @@ def get_child_windows(parent):
 def mouse_click(handle, x, y, movex=None, movey=None):
     hwnd   = win32gui.FindWindowEx(handle, None, None, None)
     # win32gui.SetForegroundWindow(handle)
-    param   = win32api.MAKELONG(x,y-5)
+    param   = win32api.MAKELONG(x,y)
 
     if movex is None or movey is None:
         # pyautogui.click(x,y)
         win32gui.PostMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, param)
-        time.sleep(0.09)
+        time.sleep(0.1)
         win32gui.PostMessage(hwnd, win32con.WM_LBUTTONUP, None, param)
     else:
         move_param  = win32api.MAKELONG(movex, movey)
