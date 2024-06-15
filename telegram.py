@@ -76,6 +76,8 @@ while True:
 
 			if check > 50:
 				#재시작
+				image_lib.capture_click(hwnd, ".\\coin_img\\start2.jpg")
+				time.sleep(3)
 				image_lib.capture_click(hwnd, ".\\coin_img\\x.jpg")
 				time.sleep(3)
 				image_lib.capture_click(hwnd, ".\\coin_img\\x2.jpg")
