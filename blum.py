@@ -7,36 +7,46 @@ appname = "LDPlayer-1"
 
 hwnd = win32gui.FindWindow(None, appname)
 
-mouse_p = None
-
 while True:
 	print("시작")
-	b1 = image_lib.match_img(hwnd, ".\\coin_img\\b1.jpg",0.7)
+	b1 = image_lib.match_img_list(hwnd, ".\\coin_img\\b1.jpg")
 	if b1:
-		print("b1있음")
-		image_lib.mouse_click(hwnd, b1[0], b1[1])
+		print("b1있음", len(b1))
+		for _b1 in b1:
+			image_lib.mouse_click_fast(hwnd, _b1[0], _b1[1])
+			print(_b1)
 
-	b2 = image_lib.match_img(hwnd, ".\\coin_img\\b2.jpg",0.7)
+	b2 = image_lib.match_img_list(hwnd, ".\\coin_img\\b2.jpg")
 	if b2:
-		print("b2있음")
-		image_lib.mouse_click(hwnd, b2[0], b2[1])
+		print("b2있음", len(b2))
+		for _b2 in b2:
+			image_lib.mouse_click_fast(hwnd, _b2[0], _b2[1])
 
-	b3 = image_lib.match_img(hwnd, ".\\coin_img\\b3.jpg",0.7)
+	b3 = image_lib.match_img_list(hwnd, ".\\coin_img\\b3.jpg")
 	if b3:
-		print("b3있음")
-		image_lib.mouse_click(hwnd, b3[0], b3[1])
-	
-	b4 = image_lib.match_img(hwnd, ".\\coin_img\\b4.jpg",0.7)
-	if b4:
-		print("b4있음")
-		image_lib.mouse_click(hwnd, b4[0], b4[1])
+		print("b3있음", len(b3))
+		for _b3 in b3:
+			image_lib.mouse_click_fast(hwnd, _b3[0], _b3[1])
 
-	b5 = image_lib.match_img(hwnd, ".\\coin_img\\b5.jpg",0.7)
+	b4 = image_lib.match_img_list(hwnd, ".\\coin_img\\b4.jpg")
+	if b4:
+		print("b4있음", len(b4))
+		for _b4 in b4:
+			image_lib.mouse_click_fast(hwnd, _b4[0], _b4[1])
+
+	b5 = image_lib.match_img_list(hwnd, ".\\coin_img\\b5.jpg")
 	if b5:
-		print("b5있음")
-		image_lib.mouse_click(hwnd, b5[0], b5[1])
-	
-	b6 = image_lib.match_img(hwnd, ".\\coin_img\\b6.jpg",0.7)
+		print("b5있음", len(b5))
+		for _b5 in b5:
+			image_lib.mouse_click_fast(hwnd, _b5[0], _b5[1])
+
+	b6 = image_lib.match_img_list(hwnd, ".\\coin_img\\b6.jpg")
 	if b6:
-		print("b6있음")
-		image_lib.mouse_click(hwnd, b6[0], b6[1])
+		print("b6있음", len(b6))
+		for _b6 in b6:
+			image_lib.mouse_click_fast(hwnd, _b6[0], _b6[1])
+	b7 = image_lib.match_img_list(hwnd, ".\\coin_img\\b7.jpg")
+	if b7:
+		print("b6있음", len(b7))
+		for _b7 in b7:
+			image_lib.mouse_click_fast(hwnd, _b7[0], _b7[1])
