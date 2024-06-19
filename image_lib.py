@@ -182,13 +182,13 @@ def match_img(handle, image, per=0):
     return match_pos
 
 
-def match_img_list(handle, image):
+def match_img_list(handle, image, per):
 
     screenshot, x, y = capture_app(handle)
     
     template = cv2.imread(image, cv2.IMREAD_COLOR)
     # match_list = find_green_loc_list(screenshot, x, y)
-    match_list = match_center_loc_list(screenshot, template, x, y)
+    match_list = match_center_loc_list(screenshot, template, x, y, per)
 
     return match_list
 
@@ -295,7 +295,7 @@ def find_green_loc_list(screen, x, y):
 
     return filtered_match_list
 
-def match_center_loc_list(screen, template, x, y):
+def match_center_loc_list(screen, template, x, y, per):
     def is_far_enough(p1, p2, min_distance):
         distance = np.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
         return distance > min_distance
@@ -304,7 +304,7 @@ def match_center_loc_list(screen, template, x, y):
     posy = y
     res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
 
-    threshold = 0.8
+    threshold = per
     loc = np.where(res >= threshold)
 
     y_list = loc[0]
