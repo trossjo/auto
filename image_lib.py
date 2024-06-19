@@ -240,7 +240,7 @@ def match_center_loc(screen, template, x, y, per=0):
             match_per = per
 
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        # print("유사도 : "+str(max_val)+" / " + str(match_per))
+        print("유사도 : "+str(max_val)+" / " + str(match_per))
 
         if max_val > match_per:
             top_left = max_loc[0]+posx, max_loc[1]+posy
